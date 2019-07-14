@@ -1,12 +1,10 @@
 package workorder;
 
 import org.junit.jupiter.api.Test;
-import workorder.transition.WorkOrderTransition;
+import workorder.transition.PossibleTransitions;
 import workorder.transition.WorkOrderTransitions;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class WorkOrderTest {
 
@@ -19,7 +17,7 @@ class WorkOrderTest {
     @Test
     void ownerCanSubmitAWorkOrder() {
         WorkOrder workOrder = new WorkOrder("me");
-        List<WorkOrderTransition> possibleTransitions =
+        PossibleTransitions possibleTransitions =
                 WorkOrderTransitions.INSTANCE.getPossibleTransitionsFor(workOrder, "me");
         assertEquals(1, possibleTransitions.size());
     }
@@ -27,7 +25,7 @@ class WorkOrderTest {
     @Test
     void otherUserCannotSubmitAWorkOrder() {
         WorkOrder workOrder = new WorkOrder("me");
-        List<WorkOrderTransition> possibleTransitions =
+        PossibleTransitions possibleTransitions =
                 WorkOrderTransitions.INSTANCE.getPossibleTransitionsFor(workOrder, "other");
         assertEquals(0, possibleTransitions.size());
     }

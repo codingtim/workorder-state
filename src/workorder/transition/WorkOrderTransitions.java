@@ -14,9 +14,9 @@ public enum WorkOrderTransitions {
             new Submit()
     );
 
-    public List<WorkOrderTransition> getPossibleTransitionsFor(WorkOrder workOrder, String userId) {
-        return workOrderTransitions.stream()
+    public PossibleTransitions getPossibleTransitionsFor(WorkOrder workOrder, String userId) {
+        return new PossibleTransitions(workOrderTransitions.stream()
                 .filter(workOrderTransition -> workOrderTransition.isValid(workOrder, userId))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 }

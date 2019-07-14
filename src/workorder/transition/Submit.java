@@ -10,4 +10,14 @@ class Submit implements WorkOrderTransition {
         return workOrder.getStatus() == WorkOrderStatus.DRAFT
                 && workOrder.getOwnerId().equals(userId);
     }
+
+    @Override
+    public String getName() {
+        return "submit";
+    }
+
+    @Override
+    public void execute(WorkOrder workOrder) {
+        workOrder.submit();
+    }
 }

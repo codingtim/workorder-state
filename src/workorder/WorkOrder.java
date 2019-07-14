@@ -18,4 +18,7 @@ public class WorkOrder {
         return status;
     }
 
+    public void submit() {
+        status = WorkOrderStatus.SUBMITTED;
+    }
 }

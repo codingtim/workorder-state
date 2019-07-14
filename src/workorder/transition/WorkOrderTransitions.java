@@ -15,7 +15,7 @@ public enum WorkOrderTransitions {
     );
 
     public PossibleTransitions getPossibleTransitionsFor(WorkOrder workOrder, String userId) {
-        return new PossibleTransitions(workOrderTransitions.stream()
+        return new PossibleTransitions(workOrder, workOrderTransitions.stream()
                 .filter(workOrderTransition -> workOrderTransition.isValid(workOrder, userId))
                 .collect(Collectors.toList()));
     }
